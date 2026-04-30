@@ -6,7 +6,7 @@ SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = tensor_core_register_file.v tensor_core.v tensor_core_controller.v tt_um_tinytensorcore.v
+PROJECT_SOURCES = all_modules.v
 
 ifneq ($(GATES),yes)
 
