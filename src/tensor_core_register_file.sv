@@ -4,20 +4,19 @@ module tensor_core_register_file (
 
     input logic dual_load_enable_in,
     input logic [3:0] dual_load_register_address_in,
-    input logic [9:0] dual_load_data_in_flat,
+    input logic signed [4:0] dual_load_data_in [2],
     
-    output logic [89:0] bulk_store_data_out_flat
+    output logic signed [4:0] bulk_store_data_out [18]
 );
 
     reg signed [4:0] registers [18];
 
-    genvar pack_i;
-    generate
-        for (int n = 0; n < 18; n++) begin: pack_output
-            assign bulk_store_data_out_flat[pack_i*5 +: 5] = registers[pack_i];
+
+    always_comb begin
+        for (int n = 0; n < 18; n++) begin
+            bulk_store_data_out[n] = registers[n];
         end
-    endgenerate
-    
+    end
 
     always_ff @(posedge clock_in) begin
         if (reset_in) begin
