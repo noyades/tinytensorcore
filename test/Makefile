@@ -6,7 +6,7 @@ SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES = tensor_core_register_file.v tensor_core.v tensor_core_controller.v tt_um_tinytensorcore.v
 
 ifneq ($(GATES),yes)
 
@@ -32,7 +32,7 @@ VERILOG_SOURCES += $(PWD)/gate_level_netlist.v
 endif
 
 # Allow sharing configuration between design and testbench via `include`:
-COMPILE_ARGS 		+= -I$(SRC_DIR)
+COMPILE_ARGS 		+= -I$(SRC_DIR) -g2012
 
 # Include the testbench sources:
 VERILOG_SOURCES += $(PWD)/tb.v
