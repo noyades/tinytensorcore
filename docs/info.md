@@ -41,4 +41,4 @@ Comprehensive RTL vs gate-level verification was performed using Cadence Xcelium
 
 ## External hardware
 
-No external hardware required. The tensor core operates standalone — operand loading and result readback go through the standard TinyTapeout pin interface. 
+No external hardware required. 
